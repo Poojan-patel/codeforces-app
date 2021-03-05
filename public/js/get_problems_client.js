@@ -8,8 +8,10 @@ const regex = RegExp('[a-zA-Z0-9]');
 
 Form.addEventListener('submit',(e)=>{
     e.preventDefault();
-    if(regex.test(tags.value) == false)
-        return console.log('not possible')
+    if(regex.test(tags.value) == false){
+        errorP.style.display = 'block';
+        return errorP.innerHTML = 'Please Provide tag(s)';
+    }
     const tagValue = tags.value.toLowerCase();
     fetch('/fetchproblems?tags='+tagValue).then((response)=>{
         errorP.style.display = 'none';
