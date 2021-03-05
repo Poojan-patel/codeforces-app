@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="icon" href="/imgs/icon_img.webp">
+        <title>{{heading}}</title>
+    </head>
+    <body>
+        <h1 align="center">Codeforces App</h2>
+        {{>header}}
+        <div class="main-content-problems">
+            <form action="" class="get-problems-form">
+                <input type="text" placeholder="Enter ; Seperated Tag Name">
+                <button type="submit">Fetch</button>
+            </form>
+            <table></table>
+            <p></p>
+        </div>
+        {{>footer}}
+        <script src="/js/get_problems_client.js"></script>
+    </body>
+</html>
