@@ -108,28 +108,31 @@ footer{
 
 .main-content-problems tr{
     align-items: center;
-    max-width:30vw;
+    max-width:40vw;
     margin: 10px auto;
 }
 
 .main-content-problems th{
     font-size: 27px;
     color: lightgreen;
-    text-align: left;
+    text-align: center;
+    min-width: 5vw;
+    max-width: 10vw;
 }
 
 .main-content-problems td{
     align-items: center;
-    width: 10vw;
     margin: 10px auto;
+    min-width: 5vw;
+    max-width: 10vw;
 }
 
 .main-content-problems a{
     text-align: right;
     text-decoration: none;
     color: white;
-    
-    max-width: 20vw;
+    min-width: 20vw;
+    min-width: 25vw;
     margin: 10px 2vw;
 }
 
@@ -157,6 +160,7 @@ footer{
     text-align: center;
     border-radius: 1vh;
     border-width: 0px;
+    font-size: 1.5vh;
 }
 
 .get-problems-form button{
@@ -167,6 +171,7 @@ footer{
     text-align: center;
     border-radius: 1vh;
     border-width: 0px;
+    font-size: 1.5vh;
 }
 .main-content-compare{
     flex-grow: 1;

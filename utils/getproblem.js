@@ -14,9 +14,10 @@ const getproblem = (tag,callback) => {
         
         data = data.result.problems;
         problems = [];
-        data.forEach(({contestId, index, name} = ele)=>{
-            problems.push({contestId, index, name});
+        data.forEach(({contestId, index, name, rating='unrated'} = ele)=>{
+            problems.push({contestId, index, name, rating});
         })
+        problems.sort((a,b)=>b.rating-a.rating)
         callback(undefined, {problems});
     })
 }

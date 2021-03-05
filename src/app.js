@@ -33,7 +33,7 @@ app.get('/problems',(req,res)=>{
 })
 
 app.get('/fetchproblems',(req,res)=>{
-    const regex = RegExp('[a-zA-Z0-9]');
+    const regex = RegExp('[a-zA-Z]');
     if(req.query.tags === undefined || regex.test(req.query.tags) === false)
         return res.send({err: 'Invalid Query'})
     getproblem.getproblem(req.query.tags, (err, result)=>{
