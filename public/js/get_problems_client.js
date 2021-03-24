@@ -60,7 +60,7 @@ Form.addEventListener('submit',(e)=>{
                     tr.appendChild(td);
                     td = document.createElement('a');
                     td.innerHTML = ele.name
-                    td.href = "https://codeforces.com/problemset/problem/" + ele.contestId +"/" + ele.index;
+                    td.href = "https://codeforces.com/contest/" + ele.contestId +"/problem/" + ele.index;
                     td.target = "_blank"
                     tr.appendChild(td);
                     td = document.createElement('td');
