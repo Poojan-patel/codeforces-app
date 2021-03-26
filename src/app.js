@@ -4,6 +4,7 @@ const path = require('path');
 const hbs = require('hbs');
 const app = express();
 const getproblem = require('../utils/getproblem')
+const getuser = require('../utils/getuser')
 const port = (process.env.PORT || 2212);
 
 let url = new URL('https://codeforces.com/api/');
@@ -20,6 +21,9 @@ hbs.registerPartials(partialDir)
 
 app.use(express.static(publicDir))
 
+//Essential thing to work with post request
+app.use(express.json())
+
 app.get('/',(req,res)=>{
     res.render('index',{
         heading: 'Main Page'
@@ -29,6 +33,18 @@ app.get('/',(req,res)=>{
 app.get('/problems',(req,res)=>{
     res.render('get_problems.hbs',{
         heading: 'Problems'
+    })
+})
+
+app.post('/getinfo',(req,res)=>{
+    const handles = Object.values(req.body)
+    
+    getuser(handles, (error,results)=>{
+        if(error)
+            return res.send({error})
+        else{
+            return res.send(results)
+        }
     })
 })
 

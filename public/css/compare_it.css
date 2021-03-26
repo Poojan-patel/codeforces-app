@@ -1,0 +1,112 @@
+.main-content-compare{
+    flex-grow: 1;
+    background-color: rgba(0, 0, 0, 0.6);
+    min-width: 70vw;
+    color: white;
+    border-radius: 5vh;
+    margin: 10px auto;
+    height: 70vh;
+    overflow: auto;
+    scroll-behavior: smooth;
+}
+
+.handles-comparison-data{
+    flex-grow: 1;
+    color: white;
+    margin: 1vw auto;
+    width: min-content;
+    height: max-content;
+    max-height: max-content;
+    max-width: 60vw;
+}
+
+.handles-comparison-data table{
+    width: 30vw;
+    max-width: 60vw;
+    margin: 0vw auto;
+    font-size: 2vh;
+    color: white;
+    background-color: rgba(20, 20, 20, 1);
+}
+
+.handles-comparison-data td{
+    width: max-content;
+    border-bottom: 0.5vh solid brown;
+    padding: 1vh 1vw 1vh 0;
+    border-right: 0.5vh solid brown;
+    margin: 0 auto;
+    border-spacing: 0.5vh;
+}
+
+.handles-comparison-data td:last-child{
+    border-right: none;
+}
+
+
+.handles-comparison-data td:first-child{
+    font-size: 2.5vh;
+    font-weight: 600;
+}
+
+.handles-comparison-data td:nth-child(even){
+    background-color: rgba(40, 40, 40, 1);
+}
+
+#table-header{
+    background-color: white !important;
+    color: black;
+    font-size: 3vh;
+    font-weight: 600;
+}
+.handles-comparison-data table img{
+    width: max(15vh,15vw);
+    height: max(15vh,15vw);
+    margin: 1vh 1vw 1vh 0;
+}
+
+.compare-handles{
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+    margin: 0px auto;
+}
+
+.compare-handles > input{
+    background-color: black;
+    color: white;
+    height: 5vh;
+    width: 5vw;
+    margin: 10px auto 10px 1vh;
+    border-radius: 1vh;
+    font-size: 2vh;
+}
+.get-handles{
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    height: 10vh;
+    width: max-content;
+    
+    color:white;
+    margin: 10px auto;
+}
+
+.plus-button{
+    height:5vh;
+    margin:10px auto;
+    background-color: black;
+    border-radius: 1vh;
+    font-size: 2vh;
+}
+
+.get-handles input{
+    width: 10vw;
+    height: 5vh;
+    margin: 0px 2vh;
+    text-align: center;
+    border-radius: 1vh;
+    border-width: 0px;
+    font-size: 1.5vh;
+    color: black;
+}

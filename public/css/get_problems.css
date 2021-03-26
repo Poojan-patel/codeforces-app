@@ -1,0 +1,93 @@
+.main-content-problems{
+    flex-grow: 1;
+    background-color: rgba(0, 0, 0, 0.6);
+    min-width: 60vw;
+    max-width: 90vw;
+    
+    height: 70vh;
+    overflow: auto;
+    color: white;
+    border-radius: 5vh;
+    margin: 10px auto;   
+    scroll-behavior: smooth;
+
+}
+
+.main-content-problems table{
+    flex-grow: 1;
+    max-height: 60vh;
+    display: none;
+    border: none;
+    max-width: 40vw;
+    margin: 10px auto;
+    scroll-behavior: auto;
+    font-size: 20px;
+}
+
+.main-content-problems tr{
+    align-items: center;
+    max-width:40vw;
+    margin: 10px auto;
+}
+
+.main-content-problems th{
+    font-size: 27px;
+    color: lightgreen;
+    text-align: center;
+    min-width: 5vw;
+    max-width: 10vw;
+}
+
+.main-content-problems td{
+    align-items: center;
+    margin: 10px auto;
+    min-width: 5vw;
+    max-width: 10vw;
+}
+
+.main-content-problems a{
+    text-align: right;
+    text-decoration: none;
+    color: white;
+    min-width: 20vw;
+    min-width: 25vw;
+    margin: 10px 2vw;
+}
+
+.main-content-problems a:hover{
+    font-size: 23px;
+    font-weight: 600;
+    color:peru
+}
+
+.main-content-problems p{
+    display: none;
+    text-align: center;
+    font-size: 20px;
+}
+
+.get-problems-form{
+    width: 30vw;
+    margin: 1vh auto;
+}
+
+.get-problems-form input{
+    min-width: 25vw;
+    height: 5vh;
+    margin: 1vh auto;
+    text-align: center;
+    border-radius: 1vh;
+    border-width: 0px;
+    font-size: 1.5vh;
+}
+
+.get-problems-form button{
+    min-width: 3vw;
+    height: 4vh;
+    margin: auto;
+    margin-right: 1vw;
+    text-align: center;
+    border-radius: 1vh;
+    border-width: 0px;
+    font-size: 1.5vh;
+}

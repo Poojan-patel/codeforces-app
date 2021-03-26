@@ -1,0 +1,34 @@
+.main-content-index{
+    flex-grow: 1;
+    background-color: rgba(0, 0, 0, 0.6);
+    min-width: 40vw;
+    margin: inherit;
+    color: white;
+    border-radius: 5vh;
+    padding: 10px;
+    
+}
+
+.list{
+    list-style-type: '\1F4BB';
+    font-size: 20px;
+    margin: 10px;
+}
+.list li{
+    margin:5px;
+    padding:5px;
+}
+.list li:hover{
+    font-weight: 500;
+    color: burlywood
+}
+
+.main-content-index center{
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.list li a{
+    text-decoration: none;
+    color: inherit;
+}

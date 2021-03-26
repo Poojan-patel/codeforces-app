@@ -1,0 +1,54 @@
+.main-content-invoke{
+    display:flex;
+    flex-grow: 1;
+    background-color: rgba(0, 0, 0, 0.6);
+    min-width: 90vw;
+    margin: 10px auto;
+    flex-direction: row;
+    border-radius: 5vh;
+}
+
+.main-content-editor{
+    flex-grow: 1;
+    margin: 10px auto 10px 10px;
+    max-width: 60vw;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 5vh;
+}
+
+.main-content-code{
+    flex-grow: 1;
+    margin: 10px 10px;
+    width: 59vw;
+    height: 75vh;
+    background-color: rgba(255, 255, 230, 1);
+    border-radius: 2vh;
+}
+
+.main-content-io{
+    flex-grow: 1;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 5vh;
+    margin: 10px 10px 10px auto;
+    max-width: 25vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content-input{
+    flex-grow: 1;
+    background-color: rgba(255, 255, 230, 1);
+    border-radius: 2vh;
+    margin: 10px;
+    width: 24vw;
+    height: 0.5;
+}
+
+.main-content-output{
+    flex-grow: 1;
+    background-color: rgba(255, 255, 230, 1);
+    border-radius: 2vh;
+    margin: 10px;
+    width: 24vw;
+    height: 0.5;
+}
