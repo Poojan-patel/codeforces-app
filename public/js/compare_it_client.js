@@ -10,7 +10,7 @@ const errorDisp = document.querySelector(".handles-comparison-data p")
 var count = 1
 const add_handles = (e)=>{
     count++;
-    if(count > 3)
+    if(count > 4)
         return
     e.preventDefault();
     var newHandle = Handles.lastChild.cloneNode(false);
@@ -18,7 +18,7 @@ const add_handles = (e)=>{
     newHandle.name = "handle"+count;
     newHandle.value = "";
     Handles.appendChild(newHandle);
-    if(count == 3)
+    if(count == 4)
         Add.style.display = 'none'
 }
 
@@ -51,7 +51,7 @@ const showData = (data)=>{
         var td = document.createElement('td')
         td.textContent = ele
         tr.appendChild(td)
-        if(ele === 'avatar' || ele === 'titlePhoto'){
+        if(ele === 'titlePhoto'){
             data[ele].forEach(val=>{
                 var td = document.createElement('td')
                 if(val.search('-') !== -1){
