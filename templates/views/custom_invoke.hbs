@@ -10,16 +10,31 @@
         {{>header}}
         <div class="main-content-invoke">
             <div class="main-content-editor">
-                <center style="font-family: inherit; color:white; font-size:30px">Editor</center>
-                <div class="main-content-code"></div>
+                <center style="font-family: inherit; color:black; font-size:30px">Editor</center>
+                <button class="compile-button">Compile</button>
+                <div id="main-content-code">#include&lt;bits/stdc++.h&gt;
+int main() {
+    std::string x = "Welcome to Editor";
+    std::cout &lt;&lt; x &lt;&lt; "\n";
+}
+                </div>
+                
             </div>
             <div class="main-content-io">
-                <center style="font-family: inherit; color:white; font-size:30px">Input</center>
+                <center style="font-family: inherit; color:black; font-size:30px">Input</center>
                 <div class="main-content-input"></div>
-                <center style="font-family: inherit; color:white; font-size:30px">Output</center>
+                <center style="font-family: inherit; color:black; font-size:30px">Output</center>
                 <div class="main-content-output"></div>
             </div>
         </div>
         {{>footer}}
+        <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+        <script>
+            var editor = ace.edit("main-content-code");
+            editor.setTheme("ace/theme/monokai");
+            editor.session.setMode("ace/mode/c_cpp");
+            console.log(editor.getSession().getValue(), typeof(editor.getSession().getValue()))
+            //editor.getSession().setValue("hello all") 
+        </script>
     </body>
 </html>

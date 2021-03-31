@@ -10,45 +10,55 @@
 
 .main-content-editor{
     flex-grow: 1;
-    margin: 10px auto 10px 10px;
+    margin: 1vh auto 1vh 1vw;
+    display: flex;
+    flex-direction: column;
     max-width: 60vw;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(200, 230, 230, 1);
     border-radius: 5vh;
+    color: black;
 }
 
-.main-content-code{
+#main-content-code{
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    max-width: 58vw;
+    max-height: 72vh;
     flex-grow: 1;
-    margin: 10px 10px;
-    width: 59vw;
-    height: 75vh;
-    background-color: rgba(255, 255, 230, 1);
+    margin: 1vh 1vw;
+    width: 58vw;
+    height: 72vh;
+    flex-grow: 1;
     border-radius: 2vh;
+}
+
+.compile-button{
+    margin-right: 80px;
+    flex-grow: 0;
+    width: 10vw;
+    max-width: 10vw;
+    background-color: red;
+    color: white;
 }
 
 .main-content-io{
     flex-grow: 1;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(200, 230, 230, 1);
     border-radius: 5vh;
-    margin: 10px 10px 10px auto;
+    margin: 1vh 1vw 1vh auto;
     max-width: 25vw;
     display: flex;
     flex-direction: column;
 }
 
-.main-content-input{
+.main-content-input, .main-content-output{
     flex-grow: 1;
     background-color: rgba(255, 255, 230, 1);
     border-radius: 2vh;
-    margin: 10px;
-    width: 24vw;
-    height: 0.5;
-}
-
-.main-content-output{
-    flex-grow: 1;
-    background-color: rgba(255, 255, 230, 1);
-    border-radius: 2vh;
-    margin: 10px;
-    width: 24vw;
+    margin: 1vh 1vw;
+    width: 23vw;
     height: 0.5;
 }

@@ -13,6 +13,7 @@ url.pathname = 'api/user.info';
 const publicDir = path.join(__dirname,'..','public');
 const viewDir = path.join(__dirname,'..','templates','views')
 const partialDir = path.join(__dirname,'..','templates','partials')
+const aceDir = path.join(__dirname,'..','ace')
 
 // registering different paths to express app
 app.set('view engine','hbs');
@@ -20,6 +21,7 @@ app.set('views',viewDir)
 hbs.registerPartials(partialDir)
 
 app.use(express.static(publicDir))
+app.use(express.static(aceDir))
 
 //Essential thing to work with post request
 app.use(express.json())
@@ -28,6 +30,10 @@ app.get('/',(req,res)=>{
     res.render('index',{
         heading: 'Main Page'
     })
+})
+
+app.get('/compiler',(req,res)=>{
+    res.render('onlineide')
 })
 
 app.get('/problems',(req,res)=>{
