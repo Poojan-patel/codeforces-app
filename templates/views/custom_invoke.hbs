@@ -11,30 +11,53 @@
         <div class="main-content-invoke">
             <div class="main-content-editor">
                 <center style="font-family: inherit; color:black; font-size:30px">Editor</center>
-                <button class="compile-button">Compile</button>
                 <div id="main-content-code">#include&lt;bits/stdc++.h&gt;
 int main() {
     std::string x = "Welcome to Editor";
     std::cout &lt;&lt; x &lt;&lt; "\n";
 }
                 </div>
-                
+                <div class="editor-options" >
+                    <button class="compile-button" onclick="compile_code(event);">Compile</button>
+                    <select class="languages" onchange="change_mode(event);">
+                        <option value="cpp17" selected>C++</option>
+                        <option value="c">C</option>
+                        <option value="java">Java 8</option>
+                        <option value="python3">Python 3.6</option>
+                        <option value="fortran">Fortran</option>
+                        <option value="kotlin">Kotlin</option>
+                        <option value="swift">Swift</option>
+                        <option value="pascal">Pascal</option>
+                        <option value="scala">Scala</option>
+                        <option value="go">GO</option>
+                        <option value="ruby">Ruby</option>
+                        <option value="perl">Perl</option>
+                        <option value="objc">Objective C</option>
+                        <option value="r">R Language</option>
+                        <option value="bash">Bash</option>
+                    </select>
+                    <span>
+                        Language:
+                    </span>
+                    <button class="theme-button" onclick="change_theme(event);">Theme</button>
+                    <span>
+                        Theme:
+                    </span>
+                </div>
             </div>
             <div class="main-content-io">
                 <center style="font-family: inherit; color:black; font-size:30px">Input</center>
-                <div class="main-content-input"></div>
+                <div class="main-content-input">
+                    <div><textarea></textarea></div>
+                </div>
                 <center style="font-family: inherit; color:black; font-size:30px">Output</center>
-                <div class="main-content-output"></div>
+                <div class="main-content-output">
+                    <div><textarea></textarea></div>
+                </div>
             </div>
         </div>
         {{>footer}}
         <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-        <script>
-            var editor = ace.edit("main-content-code");
-            editor.setTheme("ace/theme/monokai");
-            editor.session.setMode("ace/mode/c_cpp");
-            console.log(editor.getSession().getValue(), typeof(editor.getSession().getValue()))
-            //editor.getSession().setValue("hello all") 
-        </script>
+        <script src="/js/custom_invoke_client.js" type="text/javascript" charset="utf-8"></script>
     </body>
 </html>

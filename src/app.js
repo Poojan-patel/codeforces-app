@@ -32,8 +32,22 @@ app.get('/',(req,res)=>{
     })
 })
 
-app.get('/compiler',(req,res)=>{
-    res.render('onlineide')
+app.post('/compiler',(req,res)=>{
+    const url = "https://api.jdoodle.com/v1/execute";
+    const program = {
+        script: req.body.script,
+        language: req.body.language,
+        stdin: req.body.stdin,
+        clientId: "608ffd4e7acfd27027b32eb0d1f9d867",
+        clientSecret: "b9a6dd477fffaf6274b32625ceddd8837f80d59eaea50bec10cdd3a98058ce86",
+        versionIndex: 0
+    }
+    request({url, method:"POST", json: program}, (error, {body:data}={})=>{
+        if(error){
+            return res.send(error)
+        }
+        res.send(data)
+    })
 })
 
 app.get('/problems',(req,res)=>{
