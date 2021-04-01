@@ -81,7 +81,7 @@
 
 .main-content-input, .main-content-output{
     flex-grow: 1;
-    background-color: rgba(200, 230, 230, 1);
+    background-color: inherit;
     border-radius: 2vh;
     margin: 1vh 1vw;
     width: 23vw;
@@ -92,7 +92,6 @@
     width: 21vw;
     height: 32vh;
     margin: 1vh auto;
-    background-color: inherit;
 }
 .main-content-input div textarea, .main-content-output div textarea{
     width: inherit;

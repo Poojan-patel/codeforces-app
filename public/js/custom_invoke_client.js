@@ -2,6 +2,7 @@ var editor = ace.edit("main-content-code");
 editor.setTheme("ace/theme/monokai");
 editor.session.setMode("ace/mode/c_cpp");
 
+console.log("script loaded Successfully")
 const CompileButton = document.querySelector(".compile-button");
 const ThemeButton = document.querySelector(".theme-button");
 const LanguageSelector = document.querySelector(".languages");
@@ -10,10 +11,6 @@ const OutputText = document.querySelector(".main-content-output div textarea")
 const EditorWindow = document.querySelector(".main-content-editor")
 const IOWindow = document.querySelector(".main-content-io")
 const Headings = document.querySelectorAll("center")
-const InputDiv = document.querySelector(".main-content-input div")
-const OutputDiv = document.querySelector(".main-content-output div")
-
-console.log(InputDiv)
 
 const modes = {
     "cpp17": "c_cpp",
@@ -34,7 +31,6 @@ const modes = {
 }
 
 const getCurrentCode = ()=>editor.getSession().getValue();
-console.log(LanguageSelector.value)
 
 var themeCounter = 1
 const change_theme = (e)=>{
@@ -46,10 +42,10 @@ const change_theme = (e)=>{
         ThemeButton.style.backgroundColor = "white";
         InputText.style.backgroundColor = "white";
         OutputText.style.backgroundColor = "white";
-        IOWindow.style.backgroundColor = "rgba(100, 100, 150, 1)";
-        InputDiv.style.backgroundColor = "rgba(100, 100, 150, 1)";
-        OutputDiv.style.backgroundColor = "rgba(100, 100, 150, 1)";
-        EditorWindow.style.backgroundColor = "rgba(100, 100, 150, 1)";
+        InputText.style.color = "black";
+        OutputText.style.color = "black";
+        IOWindow.style.backgroundColor = "inherit";
+        EditorWindow.style.backgroundColor = "inherit";
         Headings.forEach(ele=>{
             ele.style.color = "white";
         })
@@ -60,10 +56,10 @@ const change_theme = (e)=>{
         ThemeButton.style.backgroundColor = "black";
         InputText.style.backgroundColor = "black";
         OutputText.style.backgroundColor = "black";
+        InputText.style.color = "white";
+        OutputText.style.color = "white";
         IOWindow.style.backgroundColor = "rgba(200, 230, 230, 1)";
         EditorWindow.style.backgroundColor = "rgba(200, 230, 230, 1)";
-        InputDiv.style.backgroundColor = "rgba(200, 230, 230, 1)";
-        OutputDiv.style.backgroundColor = "rgba(200, 230, 230, 1)";
         Headings.forEach(ele=>{
             ele.style.color = "black";
         })
@@ -73,7 +69,6 @@ const change_theme = (e)=>{
 
 const change_mode = (e)=>{
     e.preventDefault();
-    console.log("ace/mode/"+modes[LanguageSelector.value])
     editor.session.setMode("ace/mode/"+modes[LanguageSelector.value])
 }
 const compile_code = (e)=>{
@@ -84,9 +79,6 @@ const compile_code = (e)=>{
         window.alert("Code is Empty!!")
         return CompileButton.disabled = false;
     }
-//    curCode = curCode.replaceAll('\"','$')
-    // console.log(curCode)
-    // console.log(InputText.value)
     const codeOfLang = {
         script: curCode,
         language: LanguageSelector.value,
@@ -104,10 +96,8 @@ const compile_code = (e)=>{
             if(data.memory === undefined){
                 OutputText.value = "Server Not Reachable At Current Moment"
             }
-            else if(data.memory === null){
-                OutputText.value = data.output.replaceAll('jdoodle','invoked')
-            }
             else{
+                data.output = data.output.replaceAll('jdoodle','invoked');
                 OutputText.value = data.output + '\n\n========================\n' + "Memory Used:" + data.memory + '\n' + "CPU used:" + data.cpuTime;
             }
             CompileButton.disabled = false;
