@@ -1,4 +1,4 @@
-console.log("get_problem_client.js loaded Successfully");
+console.log("script loaded Successfully");
 const Form = document.querySelector(".get-problems-form");
 const tags = document.querySelector(".get-problems-form input")
 const Table = document.querySelector(".main-content-problems table")
@@ -22,7 +22,7 @@ Form.addEventListener('submit',(e)=>{
     tagValue = tagValue.replace(/[;]+/,';')
     tagValue = tagValue.replace(/;[0-9]+|[0-9]+;/g, '')
     tagValue = tagValue.replace(/[^0-9a-z;-]/g, '')
-    console.log(difficulty)
+    
     fetch('/fetchproblems?tags='+tagValue).then((response)=>{
         mainDiv.style.backgroundColor = "rgba(0,0,0,1)"
         response.json().then((data)=>{

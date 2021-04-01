@@ -27,9 +27,17 @@ app.use(express.static(aceDir))
 app.use(express.json())
 
 app.get('/',(req,res)=>{
-    res.render('index',{
-        heading: 'Main Page'
-    })
+    if(req.query.e){
+        res.render('index',{
+            heading: 'Main Page',
+            error: req.query.e
+        })    
+    }
+    else{
+        res.render('index',{
+            heading: 'Main Page'
+        })
+    }
 })
 
 app.post('/compiler',(req,res)=>{
@@ -92,9 +100,11 @@ app.get('/invoke',(req,res)=>{
 })
 
 app.get('*',(req,res)=>{
-    res.send({
-        error: "Wrong Page Requested"
-    })
+    // res.render('index',{
+    //     heading: 'Main Page',
+    //     error: "Wrong Page Requested"
+    // })
+    res.redirect('/?e='+encodeURIComponent("Wrong Page Requested"))
 })
 
 app.listen(port,()=>{
