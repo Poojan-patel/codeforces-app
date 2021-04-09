@@ -72,7 +72,16 @@
 }
 
 .get-problems-form input{
-    min-width: 25vw;
+    width: 5vw;
+    height: 5vh;
+    margin: 1vh auto;
+    text-align: center;
+    border-radius: 1vh;
+    border-width: 0px;
+    font-size: 1.5vh;
+}
+.get-problems-form select{
+    min-width: 5vw;
     height: 5vh;
     margin: 1vh auto;
     text-align: center;
@@ -81,11 +90,28 @@
     font-size: 1.5vh;
 }
 
+.tag-value{
+    height: 3vh;
+    margin: 0.5vh 0.5vw;
+    background-color: rgb(204, 172, 204);
+    border-radius: 1vw;
+    color: black;
+    padding: 0vh 0.2vw;
+}
+
+.found-tags{
+    max-width: 30vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+
 .get-problems-form button{
     min-width: 3vw;
     height: 4vh;
     margin: auto;
-    margin-right: 1vw;
+    
     text-align: center;
     border-radius: 1vh;
     border-width: 0px;
