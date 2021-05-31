@@ -14,7 +14,8 @@
     "async": "^3.2.0",
     "express": "^4.17.1",
     "hbs": "^4.1.1",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "handlebars": ">=4.7.7"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
