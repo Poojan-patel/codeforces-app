@@ -8,7 +8,7 @@ const getuser = require('../utils/getuser')
 const port = (process.env.PORT || 2212);
 
 let url = new URL('https://codeforces.com/api/');
-url.pathname = 'api/user.info';
+url.pathname = 'api/user.info'
 
 const publicDir = path.join(__dirname,'..','public');
 const viewDir = path.join(__dirname,'..','templates','views')
