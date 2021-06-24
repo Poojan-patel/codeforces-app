@@ -6,7 +6,7 @@
         <title>{{heading}}</title>
     </head>
     <body>
-        <h1 align="center">Codeforces App</h2>
+        {{>header}}
         <div class="main-content-index">
             <center>Your Progress</center>
             <p>
@@ -17,7 +17,9 @@
                 </ul>
             </p>
             <center style="background-color:rgba(255,0,0,0.75); color:white; font-size: 2vh">{{error}}</center>
+            {{>login_module}}
         </div>
+        
         {{>footer}}
     </body>
 </html>

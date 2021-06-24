@@ -1,0 +1,87 @@
+
+
+#login-box{
+    position: absolute;
+    width: 24vw;
+    height: max-content;
+    display: none;
+    /* margin: au-to auto;  */
+    top: 15%;
+    right: 1%;
+    background-color: rgba(0,0,0,0.9);
+    z-index: 10;
+    cursor: pointer;
+    color: black;
+    border-radius: 10px;  
+    
+    font-size: 25px;
+    color: white;
+    filter: blur(0px);
+    
+}
+#type-selector{
+    width: 90%;
+    height: 7vh;
+    margin: 10px auto;
+    background-color: white;
+    border-radius: 10%;
+}
+
+.login-form{
+    width: inherit;
+}
+.login-form  *{
+    width: 80%;
+    margin: 10px auto;
+}
+#type-selector > .type-login, #type-selector > .type-reg{
+    width: 40%;
+    height: 4vh;
+    float: left;
+    margin: auto auto;
+    padding: 1.5vh 0.5vw;
+    border-radius: 10%;
+    text-align: center;
+    background-color: white;
+    /* padding-top: 5px;
+    padding-bottom: 5px; */
+    color: green;
+    font-size: 90%;
+    font-weight: 700;
+    /* border-color: red;
+    border-width: 0.2vh;
+    border-style: solid; */
+    transition: background-color, box-shadow 1s;
+}
+#type-selector > .type-reg{
+    float: right;
+    margin-right: 0px;
+    
+}
+.login-form .reg-submit input[type="submit"], .login-form .log-submit input[type="submit"]{
+    width: 50%;
+    height: 7vh;
+    margin: auto auto;
+    margin-left: 25%;
+    background-color: white;
+    font-size: 90%;
+    font-weight: 700;
+    color: black;
+    cursor: pointer;
+}
+
+.login-form input[type="password"], .login-form input[type="email"], .login-form .reg-name input[type="text"]{
+    height: 10%;   
+    width: 100%;
+    background-color: gainsboro;
+    font-size: 90%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+.login-form input[type="password"]:focus, .login-form input[type="email"]:focus, .login-form .reg-name input[type="email"]:focus{
+    background-color: ivory;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}

@@ -1,26 +1,28 @@
 <html>
     <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="/css/common.css">
         <link rel="stylesheet" href="/css/compare_it.css">
         <link rel="icon" href="/imgs/icon_img2.png">
         <title>{{heading}}</title>
     </head>
     <body>
-        <h1 align="center">Codeforces App</h2>
         {{>header}}
+        {{>navbar}}
         <div class="main-content-compare">
             <form action=" " class="compare-handles">
                 <div class="get-handles">
                     <input type="text" placeholder="Enter Handle" name="handle1"></div>
                 
-                <button class="glyphicon glyphicon-plus-sign plus-button" onclick="add_handles(event);"> Add
+                <button class="plus-button" onclick="add_handles(event);">
+                    <i class="fa fa-plus"></i> Add
                     </button>
                 <input type="submit" name="Fetch">
             </form>
             <div class="handles-comparison-data">
                 <p style="font-size:3vh;width: 20vw;margin: 0px auto;display: none">Invalid Request</p>
             </div>
+            {{>login_module}}
         </div>
         {{>footer}}
         <script src="/js/compare_it_client.js"></script>

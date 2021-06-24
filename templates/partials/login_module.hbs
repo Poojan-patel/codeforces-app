@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="/css/login_module.css" />
+<div id="login-box">
+    <div id="type-selector">
+        <div class="type-login" onclick="findSelector(event,1);">
+            Login
+        </div>
+        <div class="type-reg" onclick="findSelector(event,0);">
+            Signup
+        </div>
+    </div>
+    
+        <form action="/login" method="POST" class="login-form">
+            <div class="reg-name">
+            <label for="name">Name</label>
+            <br>
+            <input type="text" name="name" />
+            </div>
+            <div>
+            <label for="email">Email</label>
+            <br>
+            <input type="email" name="email" />
+            </div>
+            <div>
+            <label for="password">Password</label> 
+            <br>
+            <input type="password" name="password">
+            </div>
+            <div class="reg-submit">
+            <input type="submit" name="Submit" value="Register"/>
+            </div>
+            <div class="log-submit">
+            <input type="submit" name="Submit" value="Login" />
+            </div>
+        </form>
+    <script src="/js/login_module_client.js"></script>
+    
+</div>

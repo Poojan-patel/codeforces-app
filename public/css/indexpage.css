@@ -1,3 +1,10 @@
+/* body :not(#login-box), body :not(#login-box)  *{
+    filter: blur(10px);
+}
+body{
+    position: relative;
+} */
+
 .main-content-index{
     flex-grow: 1;
     background-color: rgba(0, 0, 0, 0.6);
@@ -6,7 +13,7 @@
     color: white;
     border-radius: 5vh;
     padding: 10px;
-    
+   
 }
 
 .list{
