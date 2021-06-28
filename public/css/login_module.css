@@ -58,16 +58,29 @@
     margin-right: 0px;
     
 }
-.login-form .reg-submit input[type="submit"], .login-form .log-submit input[type="submit"]{
+.login-form .reg-submit input[type="submit"], .login-form .log-submit input[type="submit"],
+.authenticated .logout button{
     width: 50%;
     height: 7vh;
     margin: auto auto;
-    margin-left: 25%;
+    /* margin-left: 25%; */
     background-color: white;
     font-size: 90%;
     font-weight: 700;
     color: black;
     cursor: pointer;
+}
+
+.authenticated .logout button{
+    margin: 1vh auto;
+}
+
+.unauthenticated{
+    display: none;
+}
+
+.authenticated{
+    display: none;
 }
 
 .login-form input[type="password"], .login-form input[type="email"], .login-form .reg-name input[type="text"]{
@@ -84,4 +97,9 @@
     border-top: none;
     border-left: none;
     border-right: none;
+}
+
+.authenticated{
+    text-align: center;
+
 }

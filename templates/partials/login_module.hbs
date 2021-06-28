@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="/css/login_module.css" />
 <div id="login-box">
+    <div class="unauthenticated">
     <div id="type-selector">
         <div class="type-login" onclick="findSelector(event,1);">
             Login
@@ -9,29 +10,38 @@
         </div>
     </div>
     
-        <form action="/login" method="POST" class="login-form">
+        <form action=" " method="POST" class="login-form">
             <div class="reg-name">
             <label for="name">Name</label>
             <br>
-            <input type="text" name="name" />
+            <input type="text" name="name" value=""/>
             </div>
             <div>
             <label for="email">Email</label>
             <br>
-            <input type="email" name="email" />
+            <input type="email" name="email" value="" />
             </div>
             <div>
             <label for="password">Password</label> 
             <br>
-            <input type="password" name="password">
+            <input type="password" name="password" value="">
             </div>
             <div class="reg-submit">
-            <input type="submit" name="Submit" value="Register"/>
+            <input type="submit" name="register" value="Register"/>
             </div>
             <div class="log-submit">
-            <input type="submit" name="Submit" value="Login" />
+            <input type="submit" name="login" value="Login" />
             </div>
         </form>
+        </div>
+        <div class="authenticated">
+            <span>Hello! {{nameOfUser}}</span>
+            <div class="logout">
+            <button name="settings" value="Settings" onclick="window.location.replace('/settings')">Setting</button>
+            <button name="logout" value="Logout" onclick="logMeOut(event)">Logout</button>
+            </div>
+        </div>
+    <script src="/js/common_client.js"></script>
     <script src="/js/login_module_client.js"></script>
     
 </div>

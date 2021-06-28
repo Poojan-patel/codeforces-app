@@ -12,11 +12,17 @@
   "license": "ISC",
   "dependencies": {
     "async": "^3.2.0",
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "handlebars": ">=4.7.7",
     "hbs": "^4.1.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.9",
+    "mongoose": "^5.12.14",
     "normalize-url": "^4.5.1",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "validator": "^13.6.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"

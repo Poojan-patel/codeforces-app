@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/common.css">
+        <link rel="stylesheet" href="/css/settings.css">
+        <link rel="icon" href="/imgs/icon_img2.png">
+        <title>{{heading}}</title>
+    </head>
+    <body>
+        {{>header}}
+        {{>navbar}}
+        <div class="main-content-setting">
+            <center>Settings</center>
+            {{#if islogged}}
+                <form action="" method="POST">
+                    <div class="ids">
+                        <div>Name*</div>
+                        <div>Email</div>
+                        <div>Mobile*</div>
+                        <div>New Password</div>
+                        <div>Confirm Password</div>
+                    </div>
+                    <div class="values">
+                    <div class="name"><input type="text" name="name" ></div>
+                    <div class="email"></div>
+                    <div class="mobile"><input type="text" name="mobile"></div>
+                    <div class="npassword"><input type="password" name="npass"></div>
+                    <div class="cpassword"><input type="password" name="cpass"></div>
+                    </div>
+                    <div class="submit-btn">
+                        <input type="submit" value="Submit" name="submit">
+                    </div>
+                </form>
+                
+            {{else}}
+                <center style="background-color:rgba(255,0,0,0.75); color:white; font-size: 2vh">
+                    You Must be Logged-in to see the page
+                </center>
+            {{/if}}
+            {{>login_module}}
+        </div>
+        
+        {{>footer}}
+        <script src="/js/settings.js"></script>
+    </body>
+</html>

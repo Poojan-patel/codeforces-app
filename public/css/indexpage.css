@@ -31,8 +31,10 @@ body{
 }
 
 .main-content-index center{
-    font-size: 30px;
-    font-weight: 600;
+    font-size: 5vh;
+    font-weight: 700;
+    color: palegoldenrod;
+    margin-bottom: 3vh;
 }
 
 .list li a{

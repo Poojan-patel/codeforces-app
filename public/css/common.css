@@ -64,11 +64,13 @@ body{
 
 .header-favicon > img{
     float: right;
-    background-color: blue;
-    width: 100px;
-    height: 100px;
+    
+    width: 75px;
+    height: 75px;
     border-radius: 100%;
-    border: 0px;
+    border: solid 2px black;
+    /* border-color: black;
+    border */
     margin-right: 10px;
 }
 

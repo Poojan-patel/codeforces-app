@@ -5,6 +5,12 @@ const hbs = require('hbs');
 const app = express();
 const getproblem = require('../utils/getproblem')
 const getuser = require('../utils/getuser')
+const User = require('../models/user')
+const {Auth, Unauth} = require('../middleware/auth');
+
+const bcrypt = require('bcryptjs')
+
+require('../db/mongoose')
 const port = (process.env.PORT || 2212);
 
 let url = new URL('https://codeforces.com/api/');
@@ -30,13 +36,76 @@ app.get('/',(req,res)=>{
     if(req.query.e){
         res.render('index',{
             heading: 'Main Page',
-            error: req.query.e
+            error: req.query.e,
         })    
     }
     else{
         res.render('index',{
             heading: 'Main Page'
         })
+    }
+})
+
+app.post('/login', async(req,res)=>{
+    try{
+        const user = await User.findByCredentials(req.body);
+        const initialToken = "Bearer "+await user.generateAuthToken();
+        return res.send({initialToken}).status(201);
+
+    } catch (e){
+        res.status(404).send({error: "Invalid Username/password"})
+    }
+})
+
+app.post('/authenticate', Auth, async(req,res)=>{
+    res.send({isLogged: true, user: req.user}).status(201);
+})
+
+app.post('/logout', Unauth, async(req,res)=>{
+    res.send({loggedOut: true}).status(201);
+})
+
+app.get('/settings', async(req,res)=>{
+    //const {name, email, mobile} = req.user;
+    res.render('settings',{
+        title: 'Settings',
+        islogged: 1
+    })
+    // {
+    //     name, email, mobile
+    // })
+})
+
+app.post('/settings', Auth, async(req,res)=>{
+    try{
+        const user = req.userInfo;
+        user.name = req.body.name;
+        if(req.body.password)
+            user.password = req.body.password;
+        user.mobile = req.body.mobile;
+        await user.save();
+        res.send({updated: true}).status(200);
+    } catch(e){
+        res.send({updates: false}).status(401);
+    }
+})
+
+app.post('/register',async (req,res)=>{
+    console.log(req.body)
+    console.log(res.path)
+    try{
+        const newUser = User(req.body);
+        await newUser.save();
+        const initialToken = "Bearer "+await newUser.generateAuthToken();
+        console.log(newUser)
+        
+        res.setHeader('AuthorizationTokens',"Bearer "+initialToken);
+        console.log(res.getHeader('AuthorizationTokens'))
+        //res.writeHead(201,{'AuthorizationToken': "Bearer "+initialToken});
+        return res.send({newUser,initialToken});
+    } catch(e){
+        console.log(e)
+        return res.status(300).send(e);
     }
 })
 
@@ -60,7 +129,7 @@ app.post('/compiler',(req,res)=>{
 
 app.get('/problems',(req,res)=>{
     res.render('get_problems.hbs',{
-        heading: 'Problems'
+        heading: 'Problems',
     })
 })
 
@@ -89,13 +158,13 @@ app.get('/fetchproblems',(req,res)=>{
 
 app.get('/compare',(req,res)=>{
     res.render('compare_it.hbs',{
-        heading: 'Compare Profiles'
+        heading: 'Compare Profiles',
     })
 })
 
 app.get('/invoke',(req,res)=>{
     res.render('custom_invoke.hbs',{
-        heading: 'Custom Invoke'
+        heading: 'Custom Invoke',
     })
 })
 
