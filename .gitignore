@@ -5,3 +5,4 @@ public/js/trying.html
 ace/ace-builds/src-noconflict/xtras
 templates/views/onlineide.hbs
 public/js/.dump
+.env

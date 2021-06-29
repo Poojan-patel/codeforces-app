@@ -42,7 +42,7 @@ const userSchema = new mongoose.Schema({
 
 userSchema.methods.generateAuthToken = async function(){
     const user = this
-    const authtoken = jwt.sign({_id:user._id.toString()}, 'theminiCFapppp')
+    const authtoken = jwt.sign({_id:user._id.toString()}, process.env.JWT_SECRET)
     console.log(user._id, authtoken)
     user.webtokens = user.webtokens.concat({authtoken})
     await user.save()

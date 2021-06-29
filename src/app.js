@@ -1,3 +1,7 @@
+if(process.env.NODE_ENV !== 'production'){
+    require('dotenv').config();
+    console.log('Configured .env')
+}
 const request = require('request');
 const express = require('express');
 const path = require('path');
@@ -115,8 +119,8 @@ app.post('/compiler',(req,res)=>{
         script: req.body.script,
         language: req.body.language,
         stdin: req.body.stdin,
-        clientId: "608ffd4e7acfd27027b32eb0d1f9d867",
-        clientSecret: "b9a6dd477fffaf6274b32625ceddd8837f80d59eaea50bec10cdd3a98058ce86",
+        clientId: process.env.CLIENTID,
+        clientSecret: process.env.CLIENTSECRET,
         versionIndex: 0
     }
     request({url, method:"POST", json: program}, (error, {body:data}={})=>{

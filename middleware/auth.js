@@ -4,7 +4,7 @@ const auth = async(req,res,next)=>{
     try{
         const token = req.header('CodeforcesMiniAppAuthToken').replace('Bearer ','')
         //console.log(token)
-        const decoded = jwt.verify(token,'theminiCFapppp');
+        const decoded = jwt.verify(token,process.env.JWT_SECRET);
         //console.log(decoded)
         //console.log(token, decoded)
         const user = await User.findOne({_id: decoded._id, 'webtokens.authtoken': token})
@@ -30,7 +30,7 @@ const unauth = async(req,res,next)=>{
     try{
         const token = req.header('CodeforcesMiniAppAuthToken').replace('Bearer ','')
         //console.log(token)
-        const decoded = jwt.verify(token,'theminiCFapppp');
+        const decoded = jwt.verify(token,process.env.JWT_SECRET);
         //console.log(decoded)
         //console.log(token, decoded)
         const user = await User.findOne({_id: decoded._id, 'webtokens.authtoken': token})
