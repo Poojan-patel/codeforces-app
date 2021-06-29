@@ -23,8 +23,8 @@ const add_tag = (e) =>{
     newTag.style.display = 'block';
     newTag.style.width = 'max-content';
     TagDiv.appendChild(newTag)
-    console.log(Selection.value)
-    console.log(newTag, newTag.getAttribute('data-tag'))
+    //console.log(Selection.value)
+    //console.log(newTag, newTag.getAttribute('data-tag'))
 }
 
 const remove_me = (e,tag_name)=>{
@@ -34,7 +34,7 @@ const remove_me = (e,tag_name)=>{
 }
 
 Form.addEventListener('submit',(e)=>{
-    console.log(Diff[0].value, Diff[1].value)
+    //console.log(Diff[0].value, Diff[1].value)
     e.preventDefault();
     errorP.style.display = 'none';
     Table.style.display = 'none';

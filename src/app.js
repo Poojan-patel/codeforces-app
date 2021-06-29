@@ -1,6 +1,6 @@
 if(process.env.NODE_ENV !== 'production'){
     require('dotenv').config();
-    console.log('Configured .env')
+    //console.log('Configured .env')
 }
 const request = require('request');
 const express = require('express');
@@ -95,20 +95,20 @@ app.post('/settings', Auth, async(req,res)=>{
 })
 
 app.post('/register',async (req,res)=>{
-    console.log(req.body)
-    console.log(res.path)
+    //console.log(req.body)
+    //console.log(res.path)
     try{
         const newUser = User(req.body);
         await newUser.save();
         const initialToken = "Bearer "+await newUser.generateAuthToken();
-        console.log(newUser)
+        //console.log(newUser)
         
         res.setHeader('AuthorizationTokens',"Bearer "+initialToken);
-        console.log(res.getHeader('AuthorizationTokens'))
+        //console.log(res.getHeader('AuthorizationTokens'))
         //res.writeHead(201,{'AuthorizationToken': "Bearer "+initialToken});
         return res.send({newUser,initialToken});
     } catch(e){
-        console.log(e)
+        //console.log(e)
         return res.status(300).send(e);
     }
 })

@@ -43,7 +43,7 @@ const userSchema = new mongoose.Schema({
 userSchema.methods.generateAuthToken = async function(){
     const user = this
     const authtoken = jwt.sign({_id:user._id.toString()}, process.env.JWT_SECRET)
-    console.log(user._id, authtoken)
+    //console.log(user._id, authtoken)
     user.webtokens = user.webtokens.concat({authtoken})
     await user.save()
     return authtoken;
@@ -68,7 +68,7 @@ userSchema.pre('save', async function(next){
     if(user.isModified('password')){
         user.password = await bcrypt.hash(user.password, 8)
     }
-    console.log('Before Save')
+    //console.log('Before Save')
     next()
     
 })

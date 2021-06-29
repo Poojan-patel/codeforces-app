@@ -20,7 +20,7 @@ const auth = async(req,res,next)=>{
         req.userInfo = user
         next();
     } catch(e){
-        console.log('User Not Found')
+        //console.log('User Not Found')
         res.send({isLogged: false}).status(401);
     }
     
@@ -43,7 +43,7 @@ const unauth = async(req,res,next)=>{
         await user.save();
         next();
     } catch(e){
-        console.log('User Not Found')
+        //console.log('User Not Found')
         res.send({loggedOut: false}).status(401);
     }
     

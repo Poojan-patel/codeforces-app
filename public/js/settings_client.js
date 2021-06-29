@@ -24,7 +24,7 @@ const updateForm = document.querySelector('form');
 
 updateForm.addEventListener('submit',async (eve)=>{
     eve.preventDefault();
-    console.log(confirmPass.value, newPass.value)
+    //console.log(confirmPass.value, newPass.value)
     if(confirmPass.value !== newPass.value){
         return window.alert("Passwords not matching");
     }

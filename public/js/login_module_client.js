@@ -90,7 +90,7 @@ const registrationFunc = async({name, email, password})=>{
     }).then(response=>{
         return response.json()
     }).then((data)=>{
-        console.log(data)
+        //console.log(data)
         if(data.initialToken){
             //console.log('Registered:',data);
             window.alert('Registered Successfully');
@@ -134,7 +134,7 @@ const loginFunc = async({email, password})=>{
     }).then(response=>{
         return response.json()
     }).then((data)=>{
-        console.log(data)
+       // console.log(data)
         if(data.initialToken){
             //console.log('Registered:',data);
             window.alert('Logged-in Successfully');
@@ -147,7 +147,7 @@ const loginFunc = async({email, password})=>{
 
 LoginForm.addEventListener('submit',async (eve)=>{
     eve.preventDefault();
-    console.log('here')
+    //console.log('here')
     queryString = {}
     queryString['name'] = UserName.value
     queryString['email'] = Email.value
@@ -158,6 +158,6 @@ LoginForm.addEventListener('submit',async (eve)=>{
     else{
         return loginFunc(queryString);
     }
-    console.log(queryString)
+    
     
 })
