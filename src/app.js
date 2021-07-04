@@ -1,6 +1,6 @@
 if(process.env.NODE_ENV !== 'production'){
     require('dotenv').config();
-    //console.log('Configured .env')
+    //console.log('Configured .env') 
 }
 const request = require('request');
 const express = require('express');
