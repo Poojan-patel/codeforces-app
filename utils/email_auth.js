@@ -1,7 +1,3 @@
-if(process.env.NODE_ENV !== 'production'){
-  require('dotenv').config();
-  //console.log('Configured .env') 
-}
 const sgMail = require('@sendgrid/mail')
 sgMail.setApiKey(process.env.EMAILAPI);
 
