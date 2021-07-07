@@ -4,7 +4,7 @@ sgMail.setApiKey(process.env.EMAILAPI);
 const registration = async (email, username, pass, callback)=>{
   const msg = {
     to: email, // Change to your recipient
-    from: 'Admin<poojan4004@gmail.com>', // Change to your verified sender
+    from: process.env.ADMIN, // Change to your verified sender
     templateId: process.env.REG_AUTH_TEMPLATE,
     dynamic_template_data: {
       name: username,
@@ -23,7 +23,7 @@ const registration = async (email, username, pass, callback)=>{
 const forgotPassword = async (email, username, pass, callback)=>{
   const msg = {
     to: email, // Change to your recipient
-    from: 'Admin<poojan4004@gmail.com>', // Change to your verified sender
+    from: process.env.ADMIN, // Change to your verified sender
     templateId: process.env.FORGOT_PASS_TEMPLATE,
     dynamic_template_data: {
       name: username,

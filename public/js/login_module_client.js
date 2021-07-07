@@ -78,7 +78,6 @@ const forgotPassword = async(eve)=>{
     }).then(response=>response.json()).then(data=>{
         if(data.updated){
             window.alert("Check Your Email to reset your password")
-            window.location.replace("/")
         }
         else{
             window.alert(data.error);
