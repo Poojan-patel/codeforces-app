@@ -135,12 +135,12 @@ app.post('/register',async (req,res)=>{
                 throw err;
             }
         })
-        const initialToken = "Bearer "+await newUser.generateAuthToken();
+        //const initialToken = "Bearer "+await newUser.generateAuthToken();
         
-        res.setHeader('AuthorizationTokens',"Bearer "+initialToken);
+        //res.setHeader('AuthorizationTokens',"Bearer "+initialToken);
         //console.log(res.getHeader('AuthorizationTokens'))
         //res.writeHead(201,{'AuthorizationToken': "Bearer "+initialToken});
-        return res.status(200).send({newUser,initialToken});
+        return res.status(200).send({newUser});
     } catch(e){
         //console.log(e)
         return res.status(300).send(e);

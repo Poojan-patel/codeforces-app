@@ -133,7 +133,7 @@ const registrationFunc = async(queryString)=>{
         return response.json()
     }).then((data)=>{
         //console.log(data)
-        if(data.initialToken){
+        if(data.newUser){
             //console.log('Registered:',data);
             window.alert('Registered Successfully, Kindly Check Your Mail to login');
             return window.location.replace("/");
