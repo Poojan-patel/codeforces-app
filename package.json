@@ -11,6 +11,7 @@
   "author": "Poojan Patel",
   "license": "ISC",
   "dependencies": {
+    "@sendgrid/mail": "^7.4.5",
     "async": "^3.2.0",
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
@@ -21,6 +22,7 @@
     "mongodb": "^3.6.9",
     "mongoose": "^5.12.14",
     "normalize-url": "^4.5.1",
+    "randomstring": "^1.2.1",
     "request": "^2.88.2",
     "validator": "^13.6.0"
   },

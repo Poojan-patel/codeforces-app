@@ -8,10 +8,13 @@ const RegSelect = document.querySelector(".type-reg");
 const LoginWindow = document.querySelector("#login-box");
 const Email = document.querySelector(".login-form input[type='email']")
 const Password = document.querySelector(".login-form input[type='password']")
+const PasswordDiv = document.querySelector(".login-form > .reg-password")
 const UserName = document.querySelector(".login-form input[type='text']")
 const Auth = document.querySelector(".authenticated");
 const HandleName = document.querySelector(".authenticated > span")
 const unAuth = document.querySelector(".unauthenticated");
+const ForgotPass = document.querySelector(".login-form > a")
+const functionVal = ForgotPass.getAttribute('onclick')
 
 Name.style.display = 'none';
 RegButton.style.display = 'none';
@@ -33,6 +36,9 @@ const findSelector = (eve,val)=>{
         LogSelect.style.backgroundColor = 'lightgrey';
         RegSelect.style.boxShadow = '-10px 1px black';
         LogSelect.style.boxShadow = 'none';
+        //Password.style.display = 'block';
+        PasswordDiv.style.display = 'block';
+        ForgotPass.style.display = 'block';
     }
     else{
         RegSelect.id = 'selectedOption';
@@ -44,7 +50,43 @@ const findSelector = (eve,val)=>{
         LogSelect.style.backgroundColor = 'white';
         RegSelect.style.boxShadow = 'none';
         LogSelect.style.boxShadow = '10px 1px black';
+        //Password.style.display = 'none';
+        PasswordDiv.style.display = 'none';
+        ForgotPass.style.display = 'none';
     }
+}
+
+const forgotPassword = async(eve)=>{
+    eve.preventDefault();
+    //console.log(functionVal)
+    if(Email.value === ""){
+        return window.alert("Enter Email to Proceed")
+    }
+    
+    ForgotPass.setAttribute('onclick','');
+    //console.log(ForgotPass.getAttribute('onclick'))
+    //ForgotPass.onclick = "";
+    
+    await fetch("/resetpassword",{
+        method: "POST",
+        headers:{
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+            'email': Email.value
+        })
+    }).then(response=>response.json()).then(data=>{
+        if(data.updated){
+            window.alert("Check Your Email to reset your password")
+            window.location.replace("/")
+        }
+        else{
+            window.alert(data.error);
+        }
+    })
+    //ForgotPass.onclick = "forgotPassword(event)";
+    ForgotPass.setAttribute('onclick',functionVal);
+    //console.log(ForgotPass.getAttribute('onclick'))
 }
 
 const openWindow = async (eve)=>{
@@ -80,7 +122,7 @@ const openWindow = async (eve)=>{
         LoginWindow.style.display = 'none';
 }
 
-const registrationFunc = async({name, email, password})=>{
+const registrationFunc = async(queryString)=>{
     fetch('/register',{
         method: 'POST',
         headers:{
@@ -93,7 +135,7 @@ const registrationFunc = async({name, email, password})=>{
         //console.log(data)
         if(data.initialToken){
             //console.log('Registered:',data);
-            window.alert('Registered Successfully');
+            window.alert('Registered Successfully, Kindly Check Your Mail to login');
             return window.location.replace("/");
         }
         window.alert('Registration Unsuccessful, Try to Log-in incase you are registered');
@@ -124,7 +166,7 @@ const logMeOut= async (eve)=>{
     })
 }
 
-const loginFunc = async({email, password})=>{
+const loginFunc = async(queryString)=>{
     fetch('/login',{
         method: 'POST',
         headers:{
@@ -149,13 +191,14 @@ LoginForm.addEventListener('submit',async (eve)=>{
     eve.preventDefault();
     //console.log('here')
     queryString = {}
-    queryString['name'] = UserName.value
     queryString['email'] = Email.value
-    queryString['password'] = Password.value
+    
     if(RegSelect.id !== ""){
+        queryString['name'] = UserName.value
         return registrationFunc(queryString);
     }
     else{
+        queryString['password'] = Password.value
         return loginFunc(queryString);
     }
     

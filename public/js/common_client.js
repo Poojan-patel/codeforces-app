@@ -9,7 +9,7 @@ window.fetch = async (uri,options)=>{
     // });
     
         resp.clone().json().then(body=>{
-            if(body.initialToken){
+            if(body.initialToken && !body.newUser){
                 window.localStorage.setItem('CodeforcesMiniAppAuthToken',body.initialToken);
             }
         })

@@ -11,7 +11,9 @@ const getproblem = require('../utils/getproblem')
 const getuser = require('../utils/getuser')
 const User = require('../models/user')
 const {Auth, Unauth} = require('../middleware/auth');
+const randomstring = require('randomstring')
 
+const {registration, forgotPassword} = require('../utils/email_auth')
 const bcrypt = require('bcryptjs')
 
 require('../db/mongoose')
@@ -61,6 +63,33 @@ app.post('/login', async(req,res)=>{
     }
 })
 
+app.post('/resetpassword', async(req,res)=>{
+    try{
+        //console.log(req.body)
+        const user = await User.findOne({email:req.body.email})
+        if(!user){
+            throw "User Not Found";
+        }
+        const randomPass = randomstring.generate(10)
+        //console.log(randomPass)
+        user.password = randomPass;
+        user.webtokens = [];
+        await user.save();
+        await forgotPassword(req.body.email, user.name, randomPass, (err,msg)=>{
+            if(err){
+                throw err;
+            }
+            res.status(200).send({
+                updated: true
+            })
+        })
+    } catch(error){
+        res.status(404).send({
+            error
+        })
+    }
+})
+
 app.post('/authenticate', Auth, async(req,res)=>{
     res.send({isLogged: true, user: req.user}).status(201);
 })
@@ -95,18 +124,23 @@ app.post('/settings', Auth, async(req,res)=>{
 })
 
 app.post('/register',async (req,res)=>{
-    //console.log(req.body)
-    //console.log(res.path)
+    
     try{
+        const randomPass = randomstring.generate(10)
+        req.body.password = randomPass;
         const newUser = User(req.body);
         await newUser.save();
+        await registration(req.body.email, req.body.name, randomPass, (err,msg)=>{
+            if(err){
+                throw err;
+            }
+        })
         const initialToken = "Bearer "+await newUser.generateAuthToken();
-        //console.log(newUser)
         
         res.setHeader('AuthorizationTokens',"Bearer "+initialToken);
         //console.log(res.getHeader('AuthorizationTokens'))
         //res.writeHead(201,{'AuthorizationToken': "Bearer "+initialToken});
-        return res.send({newUser,initialToken});
+        return res.status(200).send({newUser,initialToken});
     } catch(e){
         //console.log(e)
         return res.status(300).send(e);

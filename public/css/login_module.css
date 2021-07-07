@@ -103,3 +103,16 @@
     text-align: center;
 
 }
+
+.login-form > a{
+    width: 80%;
+    
+    margin-left: 10%;
+    
+    font-size: 20px;
+    color: lightgreen;
+}
+
+.login-form > a:hover{
+    border-bottom: 1px solid white;
+}
