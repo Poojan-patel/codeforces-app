@@ -52,6 +52,57 @@ app.get('/',(req,res)=>{
     }
 })
 
+app.get('/problems',(req,res)=>{
+    res.render('get_problems.hbs',{
+        heading: 'Problems',
+    })
+})
+
+app.get('/fetchproblems',(req,res)=>{
+    const regex = RegExp('[a-zA-Z]');
+    if(req.query.tags === undefined || regex.test(req.query.tags) === false)
+        return res.send({err: 'Invalid Query'})
+    getproblem.getproblem(req.query.tags, (err, result)=>{
+        if(err)
+            return res.send({err});
+        res.send(result);
+    })
+})
+
+app.get('/compare',(req,res)=>{
+    res.render('compare_it.hbs',{
+        heading: 'Compare Profiles',
+    })
+})
+
+
+
+app.get('/invoke',(req,res)=>{
+    res.render('custom_invoke.hbs',{
+        heading: 'Custom Invoke',
+    })
+})
+
+app.post('/compiler',(req,res)=>{
+    const url = "https://api.jdoodle.com/v1/execute";
+    const program = {
+        script: req.body.script,
+        language: req.body.language,
+        stdin: req.body.stdin,
+        clientId: process.env.CLIENTID,
+        clientSecret: process.env.CLIENTSECRET,
+        versionIndex: 0
+    }
+    request({url, method:"POST", json: program}, (error, {body:data}={})=>{
+        if(error){
+            return res.send(error)
+        }
+        res.send(data)
+    })
+})
+
+
+
 app.post('/login', async(req,res)=>{
     try{
         const user = await User.findByCredentials(req.body);
@@ -145,65 +196,6 @@ app.post('/register',async (req,res)=>{
         //console.log(e)
         return res.status(300).send(e);
     }
-})
-
-app.post('/compiler',(req,res)=>{
-    const url = "https://api.jdoodle.com/v1/execute";
-    const program = {
-        script: req.body.script,
-        language: req.body.language,
-        stdin: req.body.stdin,
-        clientId: process.env.CLIENTID,
-        clientSecret: process.env.CLIENTSECRET,
-        versionIndex: 0
-    }
-    request({url, method:"POST", json: program}, (error, {body:data}={})=>{
-        if(error){
-            return res.send(error)
-        }
-        res.send(data)
-    })
-})
-
-app.get('/problems',(req,res)=>{
-    res.render('get_problems.hbs',{
-        heading: 'Problems',
-    })
-})
-
-app.post('/getinfo',(req,res)=>{
-    const handles = Object.values(req.body)
-    
-    getuser(handles, (error,results)=>{
-        if(error)
-            return res.send({error})
-        else{
-            return res.send(results)
-        }
-    })
-})
-
-app.get('/fetchproblems',(req,res)=>{
-    const regex = RegExp('[a-zA-Z]');
-    if(req.query.tags === undefined || regex.test(req.query.tags) === false)
-        return res.send({err: 'Invalid Query'})
-    getproblem.getproblem(req.query.tags, (err, result)=>{
-        if(err)
-            return res.send({err});
-        res.send(result);
-    })
-})
-
-app.get('/compare',(req,res)=>{
-    res.render('compare_it.hbs',{
-        heading: 'Compare Profiles',
-    })
-})
-
-app.get('/invoke',(req,res)=>{
-    res.render('custom_invoke.hbs',{
-        heading: 'Custom Invoke',
-    })
 })
 
 app.get('*',(req,res)=>{
