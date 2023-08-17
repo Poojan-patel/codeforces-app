@@ -48,7 +48,7 @@ jobs:
 
   deploy:
     environment:
-      name: app-deployment
+      name: github-pages
       url: "https://poojan-patel.github.io/codeforces-app/"
     runs-on: ubuntu-latest
     needs: build
