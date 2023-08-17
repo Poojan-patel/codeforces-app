@@ -47,11 +47,11 @@ jobs:
 
   deploy:
     environment:
-      name: github-pages
+      name: app-deployment
       url: "https://poojan-patel.github.io/codeforces-app/"
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy to App Deployment
         id: deployment
         uses: actions/deploy-pages@v2
