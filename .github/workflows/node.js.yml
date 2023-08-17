@@ -44,6 +44,8 @@ jobs:
     - run: npm i
     - run: npm run build --if-present
     - run: npm run detached
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v2
 
   deploy:
     environment:
