@@ -54,4 +54,4 @@ jobs:
     steps:
       - name: Deploy to App Deployment
         id: deployment
-        uses: actions/deploy-pages
+        uses: actions/deploy-pages@v1
