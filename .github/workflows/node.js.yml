@@ -20,7 +20,7 @@ jobs:
         JWT_SECRET: ${{ secrets.JWT_SECRET }}
         MONGODB_URI: ${{ secrets.MONGODB_URI }}
         REG_AUTH_TEMPLATE: ${{ secrets.REG_AUTH_TEMPLATE }}
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
